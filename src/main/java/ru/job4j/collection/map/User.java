@@ -1,6 +1,5 @@
 package ru.job4j.collection.map;
 
-import java.sql.SQLOutput;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -29,7 +28,7 @@ public class User {
         map.put(user1, new Object());
         map.put(user2, new Object());
         map.forEach((key, value) -> System.out.println("Key : " + key + "  Value : " + value));
-        }
+    }
 
     @Override
     public String toString() {
