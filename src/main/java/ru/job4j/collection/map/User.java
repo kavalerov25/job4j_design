@@ -48,6 +48,11 @@ public class User {
         return children == user.children && Objects.equals(name, user.name)
                                          && Objects.equals(birthday, user.birthday);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, children, birthday);
+    }
 }
 
 
