@@ -15,7 +15,7 @@ public class User {
 
     public static void main(String[] args) {
         User user1 = new User("Kir", 0, new GregorianCalendar(1990, 4, 24));
-        User user2 = new User("Kir", 0, new GregorianCalendar(1990, 4, 24));
+        User user2 = new User("Kir", 2, new GregorianCalendar(1990, 5, 24));
 
         System.out.println("Какие у них хэш-коды?");
         System.out.println("User1 hashcode: " + user1.hashCode());
@@ -46,14 +46,24 @@ public class User {
         }
         User user = (User) o;
         return children == user.children && Objects.equals(name, user.name)
-                                         && Objects.equals(birthday, user.birthday);
+               && Objects.equals(birthday, user.birthday);
     }
 
+    /*  @Override
+      public int hashCode() {
+          return Objects.hash(name, children, birthday);
+      }
+     */
     @Override
     public int hashCode() {
-        return Objects.hash(name, children, birthday);
+        int result = 17;
+        result = 31 * result + (name == null ? 0 : name.hashCode());
+        result = 31 * result + children;
+        result = 31 * result + (birthday == null ? 0 : birthday.hashCode());
+        return result;
     }
 }
+
 
 
 
