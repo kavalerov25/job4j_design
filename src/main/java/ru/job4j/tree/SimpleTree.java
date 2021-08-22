@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 public class SimpleTree<E> implements Tree<E> {
     private final Node<E> root;
 
-    public SimpleTree(final E root) {
+       public SimpleTree(final E root) {
         this.root = new Node<>(root);
     }
 
