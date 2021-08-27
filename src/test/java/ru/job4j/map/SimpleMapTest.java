@@ -19,16 +19,17 @@ public class SimpleMapTest {
 
     @Test
     public void get() {
-        SimpleMap<Integer, String> map = new SimpleMap<>();
-        assertNull(map.get(1));
+        SimpleMap<String, Integer> map = new SimpleMap<>();
+        map.put("1", 1);
+        map.put("2", 2);
+        assertThat(map.get("1"), is(1));
     }
 
     @Test
     public void remove() {
-        SimpleMap<Integer, String> map = new SimpleMap<>();
-        map.put(1, "first");
-        assertTrue(map.remove(1));
-        assertNull(map.get(1));
+        SimpleMap<String, Integer> map = new SimpleMap<>();
+        map.put("1", 1);
+        assertThat(map.remove("1"), is(true));
     }
 
     @Test
