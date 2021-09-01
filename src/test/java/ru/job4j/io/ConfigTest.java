@@ -5,6 +5,7 @@ import org.hamcrest.Matchers;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+
 public class ConfigTest {
 
     @Test

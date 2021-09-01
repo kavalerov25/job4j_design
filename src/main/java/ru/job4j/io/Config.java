@@ -2,9 +2,9 @@ package ru.job4j.io;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringJoiner;
 
 public class Config {
 
@@ -13,6 +13,11 @@ public class Config {
 
     public Config(final String path) {
         this.path = path;
+    }
+
+    public static void main(String[] args) {
+        Config config = new Config("app.properties");
+        System.out.println(config);
     }
 
     public void load() {
@@ -34,7 +39,6 @@ public class Config {
         return values.get(key);
     }
 
-
     @Override
     public String toString() {
         StringJoiner out = new StringJoiner(System.lineSeparator());
@@ -44,10 +48,5 @@ public class Config {
             e.printStackTrace();
         }
         return out.toString();
-    }
-
-    public static void main(String[] args) {
-        Config config = new Config("app.properties");
-        System.out.println(config);
     }
 }
