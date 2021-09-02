@@ -21,15 +21,11 @@ public class Config {
     }
 
     public void load() {
-        try (BufferedReader in = new BufferedReader(new FileReader(path))) {
-            in.lines().forEach(s -> {
-                if (!s.startsWith("#") && s.contains("=") && !s.startsWith("//")) {
-                    String[] points = s.split("=");
-                    if (points.length <= 2) {
-                        values.put(points[0], points[1]);
-                    }
-                }
-            });
+        try (BufferedReader read = new BufferedReader(new FileReader(path))) {
+            read.lines()
+                    .filter(r -> !r.startsWith("#") && r.contains("="))
+                    .map(r -> r.split("="))
+                    .forEach(r -> values.put(r[0], r.length < 2 ? null : r[1]));
         } catch (Exception e) {
             e.printStackTrace();
         }

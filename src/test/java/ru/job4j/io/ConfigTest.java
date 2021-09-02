@@ -14,7 +14,7 @@ public class ConfigTest {
         Config config = new Config(path);
         config.load();
         assertThat(config.value("first"), is("Arsentev"));
-        assertThat(config.value("second"), is("Korobeynikov "));
+        assertThat(config.value("second"), is("Korobeynikov"));
     }
 
     @Test
@@ -22,7 +22,7 @@ public class ConfigTest {
         String path = "./data/pair_without_comment.properties";
         Config config = new Config(path);
         config.load();
-        assertThat(config.value("first"), is("Arsentev "));
+        assertThat(config.value("first"), is("Arsentev"));
         assertThat(config.value("second"), is(Matchers.nullValue()));
     }
 }
