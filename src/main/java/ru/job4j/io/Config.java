@@ -25,7 +25,7 @@ public class Config {
             read.lines()
                     .filter(r -> !r.startsWith("#") && r.contains("="))
                     .map(r -> r.split("="))
-                    .forEach(r -> values.put(r[0], r.length < 2 ? null : r[1]));
+                    .forEach(r -> values.put(r[0], r.length < 2 ? "" : r[1]));
         } catch (Exception e) {
             e.printStackTrace();
         }
