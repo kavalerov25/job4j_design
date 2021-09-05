@@ -19,7 +19,6 @@ public class Search {
                 .endsWith(args[1])));
     }
 
-
     public static List<Path> search(Path root, Predicate<Path> condition) throws IOException {
         SearchFiles searcher = new SearchFiles(condition);
         Files.walkFileTree(root, searcher);

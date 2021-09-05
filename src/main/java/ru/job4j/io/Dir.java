@@ -1,5 +1,4 @@
 package ru.job4j.io;
-
 import java.io.File;
 
 public class Dir {
