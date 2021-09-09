@@ -31,7 +31,7 @@ public class ArgsName {
             throw new IllegalArgumentException("Root folder is null. Usage java -jar dir.jar ROOT_FOLDER.");
         }
         Arrays.stream(args)
-                .filter(s -> s.startsWith("-") && s.startsWith("="))
+                .filter(s -> s.startsWith("-") && s.contains("="))
                 .map(s -> s.split("="))
                 .forEach(s -> {
                     if (s.length != 2) {
