@@ -1,0 +1,13 @@
+user: привет
+ConsoleChat: Как дела?
+user: нормуль
+ConsoleChat: Затрудняюсь ответить
+user: будешь учиться
+ConsoleChat: Проснись.
+user: нужно ли изучать Kotlin
+ConsoleChat: Пока.
+user: сначала изучиJava
+ConsoleChat: Проснись.
+user: Ты хороший советчик
+ConsoleChat: Привет.
+user: закончить
