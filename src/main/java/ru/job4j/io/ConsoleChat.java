@@ -1,6 +1,7 @@
 package ru.job4j.io;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.*;
 
 public class ConsoleChat {
@@ -24,12 +25,12 @@ public class ConsoleChat {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String ask = reader.readLine();
             boolean isContinue = true;
-            while (!ask.equals(OUT)) {
+            while (!OUT.equals(ask)) {
                 index = random.nextInt(answers.size());
-                if (ask.equals(STOP)) {
+                if (STOP.equals(ask)) {
                     isContinue = false;
                 }
-                if (ask.equals(CONTINUE)) {
+                if (CONTINUE.equals(ask)) {
                     log.add("user: " + ask);
                     isContinue = true;
                     ask = reader.readLine();
@@ -65,8 +66,7 @@ public class ConsoleChat {
     }
 
     private void saveLog(List<String> log) {
-        try (BufferedWriter out = new BufferedWriter(
-                new FileWriter(path))) {
+        try (BufferedWriter out = new BufferedWriter(new FileWriter(path, Charset.forName("WINDOWS-1251")))) {
             for (String w : log) {
                 out.write(w + System.lineSeparator());
             }

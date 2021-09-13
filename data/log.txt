@@ -1,13 +1,15 @@
-user: РїСЂРёРІРµС‚
-ConsoleChat: РљР°Рє РґРµР»Р°?
-user: РЅРѕСЂРјСѓР»СЊ
-ConsoleChat: Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ
-user: Р±СѓРґРµС€СЊ СѓС‡РёС‚СЊСЃСЏ
-ConsoleChat: РџСЂРѕСЃРЅРёСЃСЊ.
-user: РЅСѓР¶РЅРѕ Р»Рё РёР·СѓС‡Р°С‚СЊ Kotlin
-ConsoleChat: РџРѕРєР°.
-user: СЃРЅР°С‡Р°Р»Р° РёР·СѓС‡РёJava
-ConsoleChat: РџСЂРѕСЃРЅРёСЃСЊ.
-user: РўС‹ С…РѕСЂРѕС€РёР№ СЃРѕРІРµС‚С‡РёРє
-ConsoleChat: РџСЂРёРІРµС‚.
-user: Р·Р°РєРѕРЅС‡РёС‚СЊ
+user: Привет
+ConsoleChat: Да.
+user: Как дела
+ConsoleChat: Затрудняюсь ответить
+user: Головать пойдешь
+ConsoleChat: Затрудняюсь ответить
+user: Java изучать нравиться?
+ConsoleChat: Нет.
+user: Это нормально))
+ConsoleChat: Как дела?
+user: И
+ConsoleChat: Проснись.
+user: Пошёл изучать Java
+ConsoleChat: Привет.
+user: закончить
