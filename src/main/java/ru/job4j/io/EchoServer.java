@@ -16,6 +16,7 @@ public class EchoServer {
                     for (String str = in.readLine(); str != null && !str.isEmpty(); str = in.readLine()) {
                         System.out.println(str);
                         if (str.contains("Bye")) {
+                            System.out.println("the server is stopped.");
                             server.close();
                         }
                     }
