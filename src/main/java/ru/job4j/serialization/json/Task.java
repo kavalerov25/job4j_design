@@ -7,6 +7,10 @@ public class Task {
         this.activity = activity;
     }
 
+    public String getActivity() {
+        return activity;
+    }
+
     @Override
     public String toString() {
         return "Task{"

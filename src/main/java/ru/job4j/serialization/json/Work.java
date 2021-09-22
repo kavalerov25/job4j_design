@@ -8,6 +8,23 @@ import java.util.Arrays;
 public class Work {
     private final boolean done;
     private final int time;
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public String[] getPerformers() {
+        return performers;
+    }
+
     private final Task task;
     private final String[] performers;
 
