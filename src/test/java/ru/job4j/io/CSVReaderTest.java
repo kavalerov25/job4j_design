@@ -38,5 +38,4 @@ public class CSVReaderTest {
         CSVReader.handle(argsName);
         Assert.assertEquals(expected, Files.readString(target.toPath()));
     }
-
 }
