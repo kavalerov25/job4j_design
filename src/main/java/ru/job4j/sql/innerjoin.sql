@@ -27,7 +27,9 @@ insert into people(name, address_id) values ('Oleg', 5);
 insert into people(name, address_id) values ('Igor', 5);
 
 select * from people join address ad on people.address_id = ad.id;
+
 select p.name as Имя, ad.street as Улица
 	from people as p join address as ad on p.address_id = ad.id;
+
 select p.name as Имя, ad.build as Номер_дома, ad.flat as Номер_квартиры
 	from people as p join address as ad on p.address_id = ad.id and ad.street = 'Nevskii';
