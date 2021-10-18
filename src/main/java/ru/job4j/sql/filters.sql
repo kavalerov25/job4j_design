@@ -27,7 +27,7 @@ insert into product(name, type_id, expired_date, price) values
 
 select * from product;
 /*Написать запрос получение всех продуктов с типом "СЫР"*/
-select * from product where type_id = 1;
+select * from product where type_id = select type.id from type where name = 'СЫР';
 
 /*Написать запрос получения всех продуктов, у кого в имени есть слово "мороженое"*/
 select * from product where name like '%Мороженое%';
@@ -64,7 +64,4 @@ group by t.name
 having count(t.name) < 10;
 
 /*Вывести все продукты и их тип.*/
-select product.name as product, t.name as type
-from product
-join type t on product.type_id = t.id
-group by product.name, t.name;
+select p.name as name, t.name as type from product p join type t on p.type_id = t.id;
