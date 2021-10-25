@@ -10,8 +10,7 @@ create table employes(
 );
 
 insert into departments (name) values
-	('First department'), ('Second department'), ('Third department'),
-	('Fourth department');
+	('First department'), ('Second department'), ('Third department'), ('Fourth department');
 insert into employes (name, departments_id) values
 	('Ivan', 1), ('Klava', 1), ('Stepan', 1),
 	('Oleg', 2), ('Olga', 2),
@@ -42,6 +41,10 @@ left join employes e on e.departments_id = d.id where e.departments_id is not nu
 select *
 from departments d
 right join employes e on e.departments_id = d.id;
+
+-- left и right join написать запросы, которые давали бы одинаковый результат.
+select * from departments as d left join emploees as e on e.departments_id = d.id;
+select * from emploees as e right join departments as d on e.departments_id = d.id;
 
 create table teens(
 	id serial primary key,
