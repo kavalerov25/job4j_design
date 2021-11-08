@@ -16,7 +16,7 @@ public class TableEditor implements AutoCloseable {
     }
 
     private void initConnection() throws SQLException, ClassNotFoundException {
-        Class.forName("org.postgresql.Driver");
+        Class.forName(properties.getProperty("driver"));
         String url = properties.getProperty("url");
         String login = properties.getProperty("login");
         String password = properties.getProperty("password");
@@ -29,7 +29,7 @@ public class TableEditor implements AutoCloseable {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    }
+}
 
     public void createTable(String tableName) {
         action(String.format("create table if not exists %s();", tableName));
