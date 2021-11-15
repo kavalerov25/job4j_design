@@ -1,8 +1,6 @@
 package ru.job4j.spammer;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileReader;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -30,7 +28,7 @@ public class ImportDB {
         db.save(db.load());
     }
 
-    public List<User> load() {
+    public List<User> load()  {
         List<User> users = new ArrayList<>();
         try (BufferedReader rd = new BufferedReader(new FileReader(dump))) {
             rd.lines().forEach(a -> {
@@ -41,6 +39,8 @@ public class ImportDB {
                 users.add(new User(abc[0], abc[1]));
             });
 
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return users;
     }
