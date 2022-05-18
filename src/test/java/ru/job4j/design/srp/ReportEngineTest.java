@@ -1,9 +1,7 @@
 package ru.job4j.design.srp;
 
 import org.junit.Test;
-
 import java.util.Calendar;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -40,7 +38,7 @@ public class ReportEngineTest {
                 .append(worker.getName()).append(";")
                 .append(worker.getHired()).append(";")
                 .append(worker.getFired()).append(";")
-                .append(worker.getSalary() * 12).append(";")
+                .append(worker.getSalary() * ReportForAccounting.YEARSALARY).append(";")
                 .append(System.lineSeparator());
         assertThat(engine.generate(em -> true), is(expect.toString()));
     }
@@ -69,22 +67,5 @@ public class ReportEngineTest {
                 .append(employee3.getSalary()).append(";")
                 .append(System.lineSeparator());
         assertThat(engine.generate(em -> true), is(expect.toString()));
-    }
-
-    @Test
-    public void whenGeneratedForProgrammers() {
-        MemStore store = new MemStore();
-        Calendar now = Calendar.getInstance();
-        Employee worker = new Employee("Ivan", now, now, 100);
-        store.add(worker);
-        Report report = new ReportProgrammers(store);
-        String expect = "<html><body>"
-                        + "<p>Name; Hired; Fired; Salary;</p><p>"
-                        + worker.getName() + ";"
-                        + worker.getHired() + ";"
-                        + worker.getFired() + ";"
-                        + worker.getSalary() + ";"
-                        + "</p></body></html>";
-        assertThat(report.generate(em -> true), is(expect));
     }
 }
