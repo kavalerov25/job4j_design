@@ -54,7 +54,7 @@ public class ViolationOCP {
     static class Example3 {
 
         public ArrayList<Integer> sort(ArrayList<Integer> arrayList) {
-            //some logic
+            /**some logic*/
             return arrayList;
         }
         /**
