@@ -1,6 +1,7 @@
 package ru.job4j.design.srp;
 
 import org.junit.Test;
+
 import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -15,10 +16,10 @@ public class XMLReportTest {
     public void whenXmlGenerated() {
         MemStore store = new MemStore();
         GregorianCalendar dateHired = new GregorianCalendar(2022, Calendar.MAY, 23);
-        GregorianCalendar dateFired =   new GregorianCalendar(2022, Calendar.MAY, 25);
+        GregorianCalendar dateFired = new GregorianCalendar(2022, Calendar.MAY, 25);
         dateHired.setTimeZone(TimeZone.getTimeZone(ZoneOffset.of("+3")));
         dateFired.setTimeZone(TimeZone.getTimeZone(ZoneOffset.of("+3")));
-        Employee worker = new Employee("Ivan", dateHired, dateFired,100);
+        Employee worker = new Employee("Ivan", dateHired, dateFired, 100);
         store.add(worker);
         Report xml = new XMLReport(store);
         StringBuilder expect = new StringBuilder()
