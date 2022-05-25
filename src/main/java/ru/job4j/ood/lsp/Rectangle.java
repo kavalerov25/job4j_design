@@ -1,5 +1,6 @@
 package ru.job4j.ood.lsp;
 
+
 public class Rectangle {
     private int width;
     private int height;

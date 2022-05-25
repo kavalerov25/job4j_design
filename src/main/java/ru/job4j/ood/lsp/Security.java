@@ -10,6 +10,11 @@ public class Security {
         this.name = name;
     }
 
+    public static void main(String[] args) {
+        Security security = new SecurityClub("Kirill");
+        security.cinema(15);
+    }
+
     public void cinema(int age) {
         if (age < 18) {
             throw new IllegalArgumentException("Этот фильм для взрослых!");
@@ -27,10 +32,5 @@ public class Security {
         public void cinema(int age) {
             System.out.println("Можете проходить!");
         }
-    }
-
-    public static void main(String[] args) {
-        Security security = new SecurityClub("Kirill");
-        security.cinema(15);
     }
 }

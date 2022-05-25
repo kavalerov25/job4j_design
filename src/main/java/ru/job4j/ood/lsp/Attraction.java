@@ -5,6 +5,7 @@ package ru.job4j.ood.lsp;
  * класс Attraction имеет метод для проверки, что User может пройти на аттракцион, если новый класс NewAttraction наследник
  * Attraction где забыли сделать проверку на возраст и вес
  */
+
 public class Attraction {
     private User user;
 
