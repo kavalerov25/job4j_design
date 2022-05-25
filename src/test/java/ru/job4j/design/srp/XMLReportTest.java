@@ -1,8 +1,6 @@
 package ru.job4j.design.srp;
 
 import org.junit.Test;
-
-import java.text.SimpleDateFormat;
 import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
