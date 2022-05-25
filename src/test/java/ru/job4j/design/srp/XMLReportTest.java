@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
