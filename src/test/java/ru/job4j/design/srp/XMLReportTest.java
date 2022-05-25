@@ -2,8 +2,12 @@ package ru.job4j.design.srp;
 
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
+import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -12,8 +16,11 @@ public class XMLReportTest {
     @Test
     public void whenXmlGenerated() {
         MemStore store = new MemStore();
-        Employee worker = new Employee("Ivan", new GregorianCalendar(2022, Calendar.MAY, 23),
-                new GregorianCalendar(2022, Calendar.MAY, 25), 100);
+        GregorianCalendar dateHired = new GregorianCalendar(2022, Calendar.MAY, 23);
+        GregorianCalendar dateFired =   new GregorianCalendar(2022, Calendar.MAY, 25);
+        dateHired.setTimeZone(TimeZone.getTimeZone(ZoneOffset.of("+3")));
+        dateFired.setTimeZone(TimeZone.getTimeZone(ZoneOffset.of("+3")));
+        Employee worker = new Employee("Ivan", dateHired, dateFired,100);
         store.add(worker);
         Report xml = new XMLReport(store);
         StringBuilder expect = new StringBuilder()
