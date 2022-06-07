@@ -11,8 +11,8 @@ public class Food {
 
     public Food(String name, LocalDate createDate, LocalDate expireDate, double price, double discount) {
         this.name = name;
-        this.expireDate = expireDate;
         this.createDate = createDate;
+        this.expireDate = expireDate;
         this.price = price;
         this.discount = discount;
     }

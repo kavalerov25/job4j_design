@@ -5,30 +5,35 @@ import ru.job4j.ood.productstorage.model.Food;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Trash implements Store {
     private Predicate<Food> filter = f -> getFreshPercent(f) <= 0;
-    private List<Food> foods = new ArrayList<>();
+    private List<Food> trash = new ArrayList<>();
+
+    @Override
+    public List<Food> findBy(Predicate<Food> filter) {
+        return trash.stream().filter(filter).collect(Collectors.toList());
+    }
 
     @Override
     public boolean add(Food food) {
         if (food == null) {
             throw new IllegalArgumentException("Object is NULL");
         }
-        boolean rsl = filter.test(food);
-        if (rsl) {
-            foods.add(food);
+        if (accept(food)) {
+            return trash.add(food);
         }
-        return rsl;
+        return false;
     }
 
     @Override
-    public Predicate<Food> filter() {
-        return filter;
+    public boolean accept(Food food) {
+        return filter.test(food);
     }
 
     @Override
     public List<Food> getAll() {
-        return List.copyOf(foods);
+        return List.copyOf(trash);
     }
 }

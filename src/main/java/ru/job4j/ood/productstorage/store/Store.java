@@ -8,11 +8,9 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public interface Store {
-
+    List<Food> findBy(Predicate<Food> filter);
     boolean add(Food food);
-
-    Predicate<Food> filter();
-
+    boolean accept(Food food);
     List<Food> getAll();
 
 
@@ -23,6 +21,6 @@ public interface Store {
         long shelfLife = ChronoUnit.DAYS.between(food.getCreateDate(), food.getExpireDate());
         long daysUntilExpiry = ChronoUnit.DAYS.between(LocalDate.now(), food.getExpireDate());
         double percent = (double) daysUntilExpiry / shelfLife * 100;
-        return (long) percent;
+        return (int) percent;
     }
 }
