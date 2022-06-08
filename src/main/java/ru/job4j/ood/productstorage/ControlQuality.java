@@ -7,7 +7,6 @@ import java.util.List;
 
 public class ControlQuality {
 
-    public static final int DISCOUNT = 20;
     private List<Store> stores;
 
     public ControlQuality(List<Store> stores) {

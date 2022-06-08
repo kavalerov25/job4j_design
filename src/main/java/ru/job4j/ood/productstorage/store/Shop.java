@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static ru.job4j.ood.productstorage.ControlQuality.DISCOUNT;
+import static ru.job4j.ood.productstorage.store.Discount.DISCOUNT_25;
 
 public class Shop implements Store {
     private List<Food> shop = new ArrayList<>();
     private Predicate<Food> filter = food -> getFreshPercent(food) <= 75 && getFreshPercent(food) > 0;
 
     @Override
-    public List<Food> findBy(Predicate<Food> filter) {
-        return shop.stream().filter(filter).collect(Collectors.toList());
+    public List<Food> findBy(Predicate<Food> predicate) {
+        return shop.stream().filter(predicate).collect(Collectors.toList());
     }
 
     @Override
@@ -24,22 +24,20 @@ public class Shop implements Store {
             throw new IllegalArgumentException("Object is NULL");
         }
 
-        if (accept(food)) {
-            return shop.add(food);
+        boolean isOK = accept(food);
+
+        if (isOK) {
+            if (getFreshPercent(food) < 25) {
+                food.setDiscount(DISCOUNT_25);
+            }
+            shop.add(food);
         }
-        return false;
+        return isOK;
     }
 
     @Override
     public boolean accept(Food food) {
-        boolean rsl = filter.test(food);
-        if (rsl) {
-            return true;
-        } else if (getFreshPercent(food) < 25) {
-            food.setDiscount(DISCOUNT);
-            return true;
-        }
-        return false;
+        return filter.test(food);
     }
 
     @Override
