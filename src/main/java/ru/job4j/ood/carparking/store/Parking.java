@@ -4,5 +4,5 @@ import ru.job4j.ood.carparking.model.Vehicle;
 
 public interface Parking {
 
-    boolean parking(Vehicle vehicle, int size);
+    boolean park(Vehicle vehicle);
 }
