@@ -22,17 +22,18 @@ public class Warehouse implements Store {
             throw new IllegalArgumentException("Object is NULL");
         }
 
-        if (accept(food)) {
-            return warehouse.add(food);
+        boolean isOK = accept(food);
+        if (isOK) {
+            warehouse.add(food);
         }
-        return false;
+        return isOK;
     }
 
     @Override
     public boolean accept(Food food) {
         return filter.test(food);
     }
-    
+
     public List<Food> getAll() {
         return List.copyOf(warehouse);
     }

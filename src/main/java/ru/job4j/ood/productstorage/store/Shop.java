@@ -25,7 +25,6 @@ public class Shop implements Store {
         }
 
         boolean isOK = accept(food);
-
         if (isOK) {
             if (getFreshPercent(food) < 25) {
                 food.setDiscount(DISCOUNT_25);

@@ -21,10 +21,11 @@ public class Trash implements Store {
         if (food == null) {
             throw new IllegalArgumentException("Object is NULL");
         }
-        if (accept(food)) {
-            return trash.add(food);
+        boolean isOK = accept(food);
+        if (isOK) {
+             trash.add(food);
         }
-        return false;
+        return isOK;
     }
 
     @Override
