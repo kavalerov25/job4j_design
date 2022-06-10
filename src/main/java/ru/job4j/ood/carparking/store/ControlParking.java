@@ -2,7 +2,6 @@ package ru.job4j.ood.carparking.store;
 
 import ru.job4j.ood.carparking.model.Vehicle;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ControlParking implements Parking {
