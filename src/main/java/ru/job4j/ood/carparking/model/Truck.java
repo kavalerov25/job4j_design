@@ -4,7 +4,7 @@ public class Truck implements Vehicle {
     private int size;
 
     public Truck(int size) {
-        if (size < 2) {
+        if (size <= Car.CAR_SIZE) {
             throw new IllegalArgumentException("Это не грузовой автомобиль");
         }
         this.size = size;

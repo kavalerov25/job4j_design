@@ -17,21 +17,25 @@ public class ControlParking implements Parking {
         carList = new ArrayList<>(passengerPlace + truckPlace);
     }
 
-    public boolean park(Vehicle car) {
+    @Override
+    public boolean isFreeSpace(Vehicle car) {
         boolean rsl = false;
         int size = car.carSize();
-        if (size == Car.CAR_SIZE) {
-            if (passengerPlace >= Car.CAR_SIZE) {
-                passengerPlace -= size;
-                rsl = true;
-            }
-        } else if (truckPlace != 0) {
+        if (size == Car.CAR_SIZE && passengerPlace >= Car.CAR_SIZE) {
+            rsl = true;
+            passengerPlace -= size;
+        } else if (size > Car.CAR_SIZE && truckPlace != 0) {
             truckPlace--;
             rsl = true;
-        } else if (passengerPlace >= size) {
+        } else if (size > Car.CAR_SIZE && passengerPlace >= size) {
             passengerPlace -= size;
             rsl = true;
         }
+        return rsl;
+    }
+
+    public boolean park(Vehicle car) {
+        boolean rsl = isFreeSpace(car);
         if (rsl) {
             carList.add(car);
         }
