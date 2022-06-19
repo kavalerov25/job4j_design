@@ -25,13 +25,13 @@ public class SimpleMenu implements Menu {
 
     @Override
     public Optional<MenuItemInfo> select(String itemName) {
-            Optional<MenuItemInfo> rsl = Optional.empty();
-            if (findItem(itemName).isPresent()) {
-                rsl = Optional.of(new MenuItemInfo(findItem(itemName).get().menuItem,
-                        findItem(itemName).get().number));
-            }
-            return rsl;
+        Optional<MenuItemInfo> rsl = Optional.empty();
+        if (findItem(itemName).isPresent()) {
+            rsl = Optional.of(new MenuItemInfo(findItem(itemName).get().menuItem,
+                    findItem(itemName).get().number));
         }
+        return rsl;
+    }
 
 
     @Override
@@ -126,7 +126,7 @@ public class SimpleMenu implements Menu {
             String lastNumber = numbers.removeFirst();
             List<MenuItem> children = current.getChildren();
             int currentNumber = children.size();
-            for (var i = children.listIterator(children.size()); i.hasPrevious(); ) {
+            for (var i = children.listIterator(children.size()); i.hasPrevious();) {
                 stack.addFirst(i.previous());
                 numbers.addFirst(lastNumber.concat(String.valueOf(currentNumber--)).concat("."));
             }
