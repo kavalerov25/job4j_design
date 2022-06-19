@@ -42,7 +42,7 @@ public class ControlQualityTest {
                 0);
         List<Food> foods = List.of(milk);
         controlQuality.sort(foods);
-        assertThat(trash.getAll(), is(foods));
+        assertThat(trash.getAllFoods(), is(foods));
     }
 
     @Test
@@ -70,7 +70,7 @@ public class ControlQualityTest {
                 0);
         List<Food> foods = List.of(bread);
         controlQuality.sort(foods);
-        assertThat(shop.getAll(), is(foods));
+        assertThat(shop.getAllFoods(), is(foods));
         assertThat(bread.getDiscount(), is(25.0));
     }
 
@@ -101,8 +101,21 @@ public class ControlQualityTest {
                 150.1, 0);
         List<Food> foods = List.of(eggs, bread, spagetti, milk);
         controlQuality.sort(foods);
-        assertThat(trash.getAll(), is(List.of(eggs)));
-        assertThat(shop.getAll(), is(List.of(bread, milk)));
-        assertThat(warehouse.getAll(), is(List.of(spagetti)));
+        assertThat(trash.getAllFoods(), is(List.of(eggs)));
+        assertThat(shop.getAllFoods(), is(List.of(bread, milk)));
+        assertThat(warehouse.getAllFoods(), is(List.of(spagetti)));
+    }
+
+    @Test
+    public void whenResort() {
+        LocalDate expiryDate = LocalDate.now().minusDays(10);
+        LocalDate createDate = LocalDate.now().minusDays(100);
+        Food milk = new Milk("Milk", expiryDate, createDate, 59.0, 0.0);
+        List<Food> foods = List.of(milk);
+        warehouse.add(milk);
+        assertThat(warehouse.getAllFoods(), is(List.of(foods)));
+        controlQuality.resort();
+        assertThat(warehouse.getAllFoods(), is(List.of()));
+        assertThat(trash.getAllFoods(), is(List.of(foods)));
     }
 }

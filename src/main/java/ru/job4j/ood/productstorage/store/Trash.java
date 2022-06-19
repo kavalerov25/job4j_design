@@ -3,13 +3,14 @@ package ru.job4j.ood.productstorage.store;
 import ru.job4j.ood.productstorage.model.Food;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Trash implements Store {
     private Predicate<Food> filter = f -> getFreshPercent(f) <= 0;
-    private List<Food> trash = new ArrayList<>();
+    private List<Food> trash = new LinkedList<>();
 
     @Override
     public List<Food> findBy(Predicate<Food> filter) {
@@ -34,7 +35,14 @@ public class Trash implements Store {
     }
 
     @Override
-    public List<Food> getAll() {
-        return List.copyOf(trash);
+    public List<Food> getAllFoods() {
+        return trash;
+    }
+
+    @Override
+    public List<Food> clear() {
+        List<Food> retList = this.trash;
+        this.trash = new LinkedList<>();
+        return retList;
     }
 }

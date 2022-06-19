@@ -9,9 +9,14 @@ import java.util.function.Predicate;
 
 public interface Store {
     List<Food> findBy(Predicate<Food> filter);
+
     boolean add(Food food);
+
     boolean accept(Food food);
-    List<Food> getAll();
+
+    List<Food> getAllFoods();
+
+    List<Food> clear();
 
 
     default long getFreshPercent(Food food) {
