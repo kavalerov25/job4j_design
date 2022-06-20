@@ -2,19 +2,18 @@ package ru.job4j.ood.productstorage;
 
 import org.junit.Before;
 import org.junit.Test;
-import ru.job4j.ood.productstorage.model.Bread;
-import ru.job4j.ood.productstorage.model.Eggs;
-import ru.job4j.ood.productstorage.model.Food;
-import ru.job4j.ood.productstorage.model.Milk;
+import ru.job4j.ood.productstorage.model.*;
 import ru.job4j.ood.productstorage.store.Shop;
 import ru.job4j.ood.productstorage.store.Store;
 import ru.job4j.ood.productstorage.store.Trash;
 import ru.job4j.ood.productstorage.store.Warehouse;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class ControlQualityTest {
@@ -108,14 +107,14 @@ public class ControlQualityTest {
 
     @Test
     public void whenResort() {
+        LocalDate yesterday = LocalDate.now().minusDays(1);
         LocalDate expiryDate = LocalDate.now().minusDays(10);
         LocalDate createDate = LocalDate.now().minusDays(100);
         Food milk = new Milk("Milk", expiryDate, createDate, 59.0, 0.0);
-        List<Food> foods = List.of(milk);
         warehouse.add(milk);
-        assertThat(warehouse.getAllFoods(), is(List.of(foods)));
+        assertThat(warehouse.getAllFoods(), is(List.of(milk)));
+        milk.setExpireDate(yesterday);
         controlQuality.resort();
-        assertThat(warehouse.getAllFoods(), is(List.of()));
-        assertThat(trash.getAllFoods(), is(List.of(foods)));
+        assertThat(trash.getAllFoods(), is(List.of(milk)));
     }
 }

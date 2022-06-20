@@ -31,9 +31,9 @@ public class ControlQuality {
      */
     public void resort() {
         List<Food> foodList = new LinkedList<>();
-        for (Store store : this.stores) {
-            List<Food> foods = store.clear();
-            foodList.addAll(foods);
+        for (Store store : stores) {
+            foodList.addAll(store.clear());
+
         }
         sort(foodList);
     }

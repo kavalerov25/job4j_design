@@ -2,7 +2,6 @@ package ru.job4j.ood.productstorage.store;
 
 import ru.job4j.ood.productstorage.model.Food;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -10,11 +9,11 @@ import java.util.stream.Collectors;
 
 public class Trash implements Store {
     private Predicate<Food> filter = f -> getFreshPercent(f) <= 0;
-    private List<Food> trash = new LinkedList<>();
+    private List<Food> trashStorage = new LinkedList<>();
 
     @Override
     public List<Food> findBy(Predicate<Food> filter) {
-        return trash.stream().filter(filter).collect(Collectors.toList());
+        return trashStorage.stream().filter(filter).collect(Collectors.toList());
     }
 
     @Override
@@ -24,7 +23,7 @@ public class Trash implements Store {
         }
         boolean isOK = accept(food);
         if (isOK) {
-             trash.add(food);
+            trashStorage.add(food);
         }
         return isOK;
     }
@@ -36,13 +35,13 @@ public class Trash implements Store {
 
     @Override
     public List<Food> getAllFoods() {
-        return trash;
+        return List.copyOf(trashStorage);
     }
 
     @Override
     public List<Food> clear() {
-        List<Food> retList = this.trash;
-        this.trash = new LinkedList<>();
+        List<Food> retList = getAllFoods();
+        trashStorage.removeAll(retList);
         return retList;
     }
 }
